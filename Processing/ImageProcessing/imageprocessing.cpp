@@ -40,7 +40,7 @@ void ImageProcessing::process()
         // pre process raw input data
         mImage = mPreProcesser.process(mRawImage); // 3ms
         //mask part of image
-        cv::circle(mImage, cv::Point (400,100), 220, cv::Scalar(0,0,0),-1);    
+        cv::circle(mImage, cv::Point (400,100), 220, cv::Scalar(0,0,0),-1);
         //---
     } else {
         mImage = mRawImage;
@@ -71,12 +71,12 @@ void ImageProcessing::process()
     //***************************************************************//
     // reset every 100 frames background if no object is around
     //***************************************************************//
-    
+
     if(mIndex % 100 ==  0 && typeid(*mCam) != typeid(VideoFile) && cv::countNonZero(mCCImage) == 0){
         mBS.setBackgroundImage(mImage);
     }
     mMSERImage = mBSImage;
-    
+
 
     //***************************************************************//
     // Init Color Images
@@ -133,7 +133,7 @@ void ImageProcessing::process()
     // Track current cluster
     //***************************************************************//
     mHands = mHandTracker.process(clusters);
-    mHands.push_back(mHandTracker.undefinedHand()); // undefined Finger (without a current hand)
+    mHands.push_back(mHandTracker.undefinedHand()); // undefined Finger (without a current hand) <-- Well that is just stupid method naming then...
 
 
     //***************************************************************//
@@ -146,7 +146,7 @@ void ImageProcessing::process()
     // send hand and finger informations over TUIO
     //***************************************************************//
     mTUIOSender.send(mHands);
-
+    
 
     //***************************************************************//
     // Draw cluster and hands and return for GUI visualisation
@@ -446,6 +446,3 @@ void ImageProcessing::setParallelismEnabled(int i)
 {
     mParallelismEnabled = i;
 }
-
-
-

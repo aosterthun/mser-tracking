@@ -48,7 +48,3 @@ Calibration_save
 # ImageFiles
 *.jpg
 *.png
-
-# data
-data/
-Data/

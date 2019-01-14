@@ -365,7 +365,7 @@ void MSERClustering::checkOutlierHands(std::vector<std::shared_ptr<MSER::Region>
     }
 }
 
-void MSERClustering:: checkClusterConfidence(std::vector<std::shared_ptr<MSERCluster> > clusters)
+void MSERClustering::checkClusterConfidence(std::vector<std::shared_ptr<MSERCluster> > clusters)
 {
     for (unsigned i = 0; i < clusters.size(); ++i){
         if (clusters[i]->mBlobs.size() == 0) continue;
